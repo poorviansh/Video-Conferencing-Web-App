@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const port = Process.env.PORT || 3000 ;
 
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
@@ -39,6 +40,7 @@ io.on('connection', socket => {
     
   })
 })
-server.listen(3030 , function(){
-  console.log("Server started at port 3030 !!!");
-})
+
+server.listen(port,()=>{  // do not add localhost here if you are deploying it
+    console.log("server listening to port "+port);
+});
